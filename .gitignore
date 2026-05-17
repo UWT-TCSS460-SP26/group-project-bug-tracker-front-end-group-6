@@ -1,0 +1,46 @@
+# Dependencies
+/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# Next.js
+/.next/
+/out/
+
+# Production
+/build
+
+# Testing
+/coverage
+
+# Environment (secrets)
+.env
+.env*.local
+
+# Vercel
+.vercel
+
+# Debug logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# TypeScript
+*.tsbuildinfo
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.pem
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# Optional: local-only sprint notes (uncomment if you do not want sprint5.md in git)
+# sprint5.md
