@@ -78,3 +78,29 @@ When I went to git add ., my git was starting to stage ALL of the node_modules f
 ## Takeaway
 
 I put quite a bit in my context. The Sprint description, our Open API spec, our Claude.md that Luke has been using, as well as some simple instructions. This helped me just tell cursor to "do it". I also liked that it actually smoketested and hit our Supabase, as well as verifying that it builds. I do not think that it made tests, however.
+
+## Jayda Minks
+
+### First prompt
+
+"Read sprint-5.md and openapi.yaml in this folder. Use bug.png as a reference. Build the Bug Tracker FE described in the sprint doc against the API in the spec."
+
+
+### What came back on the first cut
+
+Honestly more than I expected. It gave me a full Next.js project with the form, styling, API logic, environment variables, and a README all ready to go. The design even matched the green and cream color scheme from the reference image.
+
+### What I kept
+
+I kept all files that it created.
+
+### What I cut
+
+I didn't need to cut anything as it matched what the sprint was asking for. 
+
+### What I'd do differently next time
+
+I didn’t use Claude Code, but Claude (claude.ai) to help me. It provided me with a ZIP file and I easily put it in my code, but I know that using a full coding agent would have been faster and more efficient.
+
+### Takeaway
+Having the api spec and the sprint doc ready to drop in made a big difference. The prompt itself was pretty short and the context did most of the work. The code came out fine on the first try, it was just not as efficient as using a full coding agent. 
