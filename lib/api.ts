@@ -1,59 +1,44 @@
-// lib/api.ts
-// All API calls go through here — no hardcoded URLs anywhere else.
+import type { ApiErrorResponse, Issue, IssueRequest } from '@/types/api';
 
-export const API_URL =
-  process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:3000";
+export type { Issue };
 
-export interface IssueRequest {
-  title: string;
-  description: string;
-  reporterContact?: string;
-}
+export type SubmitResult =
+  | { ok: true; data: Issue }
+  | { ok: false; message: string };
 
-export interface Issue {
-  id: number;
-  title: string;
-  description: string;
-  reproSteps?: string | null;
-  reporterContact?: string | null;
-  status: "Open" | "InProgress" | "Resolved" | "Closed" | "Wontfix";
-  createdAt: string;
-  updatedAt: string;
-}
+export async function submitIssue(data: IssueRequest): Promise<SubmitResult> {
+  const base = process.env.NEXT_PUBLIC_API_URL ?? '';
 
-export type ApiResult<T> =
-  | { ok: true; data: T }
-  | { ok: false; status: number; message: string };
-
-export async function submitIssue(
-  body: IssueRequest
-): Promise<ApiResult<Issue>> {
+  let res: Response;
   try {
-    const res = await fetch(`${API_URL}/v1/issues`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(body),
+    res = await fetch(`${base}/v1/issues`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
     });
-
-    const json = await res.json().catch(() => ({}));
-
-    if (res.ok) {
-      return { ok: true, data: json as Issue };
-    }
-
-    // Surface the API's own error message when available
-    const message =
-      json?.message ??
-      json?.error ??
-      `Request failed with status ${res.status}`;
-    return { ok: false, status: res.status, message };
   } catch {
-    // Network failure — API may be unreachable
     return {
       ok: false,
-      status: 0,
       message:
-        "Could not reach the server. Check your connection and try again.",
+        "Couldn't reach the server. Please check your connection — your report is still here so you can try again.",
     };
   }
+
+  if (res.status === 201) {
+    const issue = (await res.json()) as Issue;
+    return { ok: true, data: issue };
+  }
+
+  if (res.status === 400) {
+    const body = (await res.json().catch(() => ({}))) as Partial<ApiErrorResponse>;
+    return {
+      ok: false,
+      message: body.message ?? 'Please check your submission and try again.',
+    };
+  }
+
+  return {
+    ok: false,
+    message: 'The server encountered an error. Please try again in a moment.',
+  };
 }

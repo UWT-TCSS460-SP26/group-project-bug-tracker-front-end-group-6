@@ -1,119 +1,13 @@
-# BugTrack FE — Sprint 5
+Deployed URL: https://tcss460-team-6-api.onrender.com/
 
-Public bug-report form for the TCSS 460 Group 6 API.  
-Built with **Next.js 15 (App Router)** + **TypeScript**, deployed to **Vercel**.
-
----
-
-## Live URL
-
-> _Add your Vercel URL here after deploying._
-
----
-
-## Quick start
-
-```bash
-# 1. Install dependencies
-npm install
-
-# 2. Configure the API URL
-cp .env.example .env.local
-# Edit .env.local and set NEXT_PUBLIC_API_URL to your deployed BE URL
-
-# 3. Run dev server
-npm run dev
-# → http://localhost:3001 (or whatever port Next picks)
-```
-
----
-
-## Environment variables
-
-| Variable | Required | Description |
-|---|---|---|
-| `NEXT_PUBLIC_API_URL` | ✅ | Base URL of the deployed BE, e.g. `https://tcss460-team-6-api.onrender.com` |
-
-Set this in:
-- **Local dev**: `.env.local` (gitignored)
-- **Vercel**: Project → Settings → Environment Variables
-- **Render**: Service → Environment
-
----
-
-## Deploying to Vercel
-
-```bash
-# Install Vercel CLI if you haven't
-npm i -g vercel
-
-# Deploy from the project root
-vercel
-
-# Set the env var in the Vercel dashboard or via CLI:
-vercel env add NEXT_PUBLIC_API_URL production
-```
-
-Or connect the GitHub repo in the Vercel dashboard for auto-deploys on push to `main`.
-
----
-
-## Project structure
-
-```
-bugtrack/
-├── app/
-│   ├── layout.tsx        # Root layout, fonts, metadata
-│   ├── page.tsx          # Home page (shell + hero + card)
-│   └── globals.css       # All styles, design tokens
-├── components/
-│   └── BugReportForm.tsx # Form with all three states
-├── lib/
-│   └── api.ts            # API calls — NEXT_PUBLIC_API_URL, no hardcoded URLs
-├── .env.example          # Template — copy to .env.local
-└── README.md
-```
-
----
-
-## API contract
-
-The form calls `POST /v1/issues` (no auth required):
-
-```http
-POST /v1/issues
-Content-Type: application/json
-
+Example POST /v1/issues format:
 {
-  "title": "Search returns no results for exact title",   // required
-  "description": "Searching for Inception returns empty…", // required
-  "reporterContact": "user@example.com"                   // optional
+"id": 1,
+"title": "Search returns no results for exact title",
+"description": "Searching for \"Inception\" returns an empty list.",
+"reproSteps": null,
+"reporterContact": "user@example.com",
+"status": "Open",
+"createdAt": "2026-05-03T10:00:00Z",
+"updatedAt": "2026-05-03T10:00:00Z"
 }
-```
-
-**Responses the UI handles:**
-
-| Scenario | HTTP | UI behaviour |
-|---|---|---|
-| Success | 201 | Success view with issue ID, form clears |
-| Validation error | 400 | Error banner + field-level errors preserved |
-| Network failure | — | Non-cryptic error banner, draft preserved |
-
----
-
-## CORS note
-
-The deployed FE origin must be in your BE's CORS allowlist.  
-Add the Vercel URL to your BE config and redeploy the BE before testing end-to-end.
-
----
-
-## Individual workflow writeups
-
-> _Each team member: add your workflow writeup here or in WORKFLOWS.md._
->
-> Include: prompts used, what the agent produced, what you kept, what you cut, what you'd change.
-
----
-
-_TCSS 460 · School of Engineering and Technology · UW Tacoma · Spring 2026_

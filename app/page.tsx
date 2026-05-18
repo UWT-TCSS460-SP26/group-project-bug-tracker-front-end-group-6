@@ -1,62 +1,45 @@
 import BugReportForm from "@/components/BugReportForm";
 
-export default function Home() {
+export default function Page() {
   return (
     <div className="page-shell">
-      {/* ── Header ─────────────────────────────────── */}
       <header className="site-header">
         <div className="logo-mark" aria-hidden="true">🐛</div>
         <div className="logo-text">
           <h1>BugTrack</h1>
-          <p>Report it. Fix it. Ship it.</p>
+          <p>Group 6 API</p>
         </div>
       </header>
 
-      {/* ── Main ───────────────────────────────────── */}
-      <main className="main-content" id="main-content">
-        <section className="hero" aria-labelledby="hero-heading">
-          <div className="hero-eyebrow" aria-hidden="true">
-            <span>✦</span> Public Bug Tracker
-          </div>
-          <h2 id="hero-heading">
-            Found something <em>broken?</em>
+      <main className="main-content">
+        <div className="hero">
+          <h2>
+            Found a bug? <em>Tell us.</em>
           </h2>
           <p>
-            File a report below — no account needed. Your report goes straight
-            to the team&rsquo;s triage queue and we&rsquo;ll get it sorted.
+            Use this form to report issues with the Group 6 API. Your report
+            goes straight to the triage queue — no login required.
           </p>
-        </section>
+        </div>
 
-        <div className="card" role="region" aria-label="Bug report form">
+        <div className="card">
           <BugReportForm />
         </div>
 
-        <aside className="mascot-strip" aria-label="Encouragement">
-          <span className="mascot-emoji" role="img" aria-label="Bug with sparkles">
-            🐛✨
-          </span>
+        <div className="mascot-strip">
+          <span className="mascot-emoji" aria-hidden="true">🐛</span>
           <div className="mascot-text">
-            <strong>Thanks for helping make things better!</strong>
+            <strong>Reports are anonymous by default</strong>
             <span>
-              Every report you file helps the team ship more reliable software.
+              Add your email or name only if you want us to follow up. The team
+              sees every submission regardless.
             </span>
           </div>
-        </aside>
+        </div>
       </main>
 
-      {/* ── Footer ─────────────────────────────────── */}
       <footer className="site-footer">
-        <p>
-          TCSS 460 · Group 6 · Spring 2026 ·{" "}
-          <a
-            href="https://tcss460-team-6-api.onrender.com/health"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{ color: "var(--green-mid)", textDecoration: "none" }}
-          >
-            API status ↗
-          </a>
-        </p>
+        TCSS 460 · Group 6 · Spring 2026
       </footer>
     </div>
   );
