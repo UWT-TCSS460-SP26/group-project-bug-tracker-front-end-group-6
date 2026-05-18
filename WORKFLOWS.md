@@ -4,7 +4,7 @@ Each team member documents their solo scaffolding session here: the prompts used
 
 ---
 
-## [Team Member Name]
+## John Anthony Mart Diego
 
 **Tool used:** Claude Code (claude-sonnet-4-6)
 
