@@ -46,3 +46,36 @@ If I were to do this again, I think I would add more context from my project, su
 ### Takeaway
 
 Context is crucial! And additionally, oftentimes I overcomplicate things with my Claude by overexplaining instead of giving adequate context.
+
+
+## Connor Willis
+
+## First Prompt: "read through the entirety of sprint5.md and do it"
+
+This was my first prompt, and Cursor built the entirety of the Bug tracker frotn end against the OpenAPI spec that I had pasted into the sprint5.md, alongside the sprint instructions. It checked the repo as well and saw that it was empty.
+
+## What came back on the first cut
+
+Cursor essentialy built the entire thing. I had a single page public bug form with no auth, with an implemented POST /v1/issues, the fields per the OpenAPI, env-based architecture, a success state, validation erros, network/server failure responses, and accessibility via labels, aria-invalid, aria-describedby, aria-live, and a focus on status.
+
+The project layout is as follows: 
+app/page.tsx — landing + form
+components/BugReportForm.tsx — form UI and states
+lib/api.ts, lib/types.ts — API client
+openapi.yaml — issues excerpt for agents/partners
+README.md, WORKFLOWS.md — docs (add each teammate’s workflow section)
+sprint5.md — already in repo (full sprint + spec)
+
+Cursor also verified that the npm run build succeds, and that the live api accepts reports. It submitted a bug report, and knew what number it would be on our supabase.
+
+## What I kept
+
+I kept all of it. It is a simple enough front end, but it does the job well enough.
+
+## What I'd do differently next time
+
+When I went to git add ., my git was starting to stage ALL of the node_modules files, which is a big nono and this went on for like 5 minutes. Luckily I didn't push anything, and I realized that it never actually put anything in the gitignore that it created. I then reset the commit, pushed the gitignore, and everything was fine frmo there.
+
+## Takeaway
+
+I put quite a bit in my context. The Sprint description, our Open API spec, our Claude.md that Luke has been using, as well as some simple instructions. This helped me just tell cursor to "do it". I also liked that it actually smoketested and hit our Supabase, as well as verifying that it builds. I do not think that it made tests, however.
