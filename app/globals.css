@@ -485,9 +485,347 @@ body {
 }
 
 /* ── Responsive ───────────────────────────────────────── */
+/* ── Site nav ─────────────────────────────────────────── */
+.logo-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.site-header {
+  justify-content: space-between;
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-left: auto;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.site-nav a {
+  color: var(--green-mid);
+  text-decoration: none;
+}
+
+.site-nav a:hover {
+  color: var(--green-deep);
+}
+
+.nav-user {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.btn-nav {
+  padding: 8px 14px;
+  font-size: 0.8rem;
+}
+
+/* ── Triage layout ────────────────────────────────────── */
+.main-content-wide {
+  max-width: 920px;
+}
+
+.triage-shell .hero-eyebrow {
+  margin-bottom: 12px;
+}
+
+.triage-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.triage-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: flex-end;
+}
+
+.toolbar-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.toolbar-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.toolbar-select {
+  min-width: 160px;
+}
+
+.triage-muted {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.issue-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.issue-row {
+  display: grid;
+  grid-template-columns: auto 1fr auto auto;
+  gap: 12px;
+  align-items: center;
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  color: inherit;
+  background: var(--cream);
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.issue-row:hover {
+  border-color: var(--green-mid);
+  background: var(--green-pale);
+}
+
+.issue-id {
+  font-weight: 700;
+  color: var(--green-deep);
+  font-size: 0.85rem;
+}
+
+.issue-title {
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.issue-date {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.status-pill {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 4px 10px;
+  border-radius: 100px;
+  border: 1px solid var(--border);
+}
+
+.status-open,
+.status-pill-Open {
+  background: var(--green-pale);
+  color: var(--green-deep);
+}
+
+.status-progress,
+.status-pill-InProgress {
+  background: var(--amber-pale);
+  color: #8b5a12;
+}
+
+.status-resolved,
+.status-pill-Resolved {
+  background: #e8f4e8;
+  color: var(--green-btn);
+}
+
+.status-closed,
+.status-pill-Closed {
+  background: var(--cream-dark);
+  color: var(--text-secondary);
+}
+
+.status-wontfix,
+.status-pill-Wontfix {
+  background: #f0f0f0;
+  color: var(--text-muted);
+}
+
+.triage-pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding-top: 8px;
+  border-top: 1px solid var(--cream-dark);
+}
+
+.pagination-buttons {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* ── Issue detail ─────────────────────────────────────── */
+.triage-detail {
+  animation: fadeUp 0.4s ease both;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 20px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--green-mid);
+  text-decoration: none;
+}
+
+.back-link:hover {
+  color: var(--green-deep);
+}
+
+.detail-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.detail-header h2 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: var(--green-deep);
+  letter-spacing: -0.02em;
+  flex: 1;
+  min-width: 200px;
+}
+
+.detail-meta {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--cream-dark);
+}
+
+.detail-meta dt {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+
+.detail-meta dd {
+  font-size: 0.9rem;
+  color: var(--text-primary);
+}
+
+.detail-section {
+  margin-bottom: 24px;
+}
+
+.detail-section h3 {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+}
+
+.detail-body {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  line-height: 1.65;
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 16px;
+  margin: 0;
+}
+
+.detail-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-top: 8px;
+}
+
+.detail-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.btn-danger {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--red-soft);
+  background: var(--red-pale);
+  border: 1.5px solid rgba(192, 57, 43, 0.3);
+  border-radius: var(--radius-sm);
+  padding: 10px 22px;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.btn-danger:hover:not(:disabled) {
+  background: #fad4d1;
+  border-color: var(--red-soft);
+}
+
+.btn-danger:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.login-card {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.login-btn {
+  width: 100%;
+  justify-content: center;
+}
+
+.login-hint {
+  font-size: 0.85rem;
+}
+
+.login-hint a {
+  color: var(--green-mid);
+  font-weight: 600;
+}
+
 @media (max-width: 600px) {
   .card { padding: 24px 20px; }
   .submit-row { flex-direction: column; align-items: stretch; }
   .btn-primary { justify-content: center; }
   .main-content { padding: 32px 16px 60px; }
+  .issue-row {
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto auto;
+  }
+  .issue-row .status-pill,
+  .issue-row .issue-date {
+    grid-column: 2;
+  }
+  .site-nav { gap: 10px; font-size: 0.8rem; }
 }

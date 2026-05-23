@@ -1,15 +1,10 @@
 import BugReportForm from "@/components/BugReportForm";
+import SiteHeader from "@/components/SiteHeader";
 
 export default function Page() {
   return (
     <div className="page-shell">
-      <header className="site-header">
-        <div className="logo-mark" aria-hidden="true">🐛</div>
-        <div className="logo-text">
-          <h1>BugTrack</h1>
-          <p>Group 6 API</p>
-        </div>
-      </header>
+      <SiteHeader triageLink />
 
       <main className="main-content">
         <div className="hero">
