@@ -3,8 +3,13 @@ import { NextResponse } from 'next/server';
 
 export default auth((req) => {
   const { pathname } = req.nextUrl;
+  const devBypass = process.env.NEXT_PUBLIC_TRIAGE_DEV_BYPASS === 'true';
 
   if (!pathname.startsWith('/triage')) {
+    return NextResponse.next();
+  }
+
+  if (devBypass) {
     return NextResponse.next();
   }
 

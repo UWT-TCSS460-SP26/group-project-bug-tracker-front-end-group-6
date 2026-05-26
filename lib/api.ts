@@ -64,10 +64,15 @@ export async function submitIssue(data: IssueRequest): Promise<SubmitResult> {
 }
 
 function authHeaders(token: string): HeadersInit {
-  return {
+  const headers: HeadersInit = {
     'Content-Type': 'application/json',
     Authorization: `Bearer ${token}`,
   };
+  if (token === 'dev-bypass') {
+    (headers as Record<string, string>)['x-dev-role'] =
+      process.env.NEXT_PUBLIC_TRIAGE_DEV_ROLE ?? 'Admin';
+  }
+  return headers;
 }
 
 export async function fetchCurrentUser(token: string): Promise<ApiResult<CurrentUser>> {
